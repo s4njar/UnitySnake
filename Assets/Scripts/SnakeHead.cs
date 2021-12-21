@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour
 {
     [SerializeField] private GameObject _bodyPartPrefab;
-    private Vector2 _direction = Vector2.right;
+    private Vector3 _direction = Vector3.left;
     private List<Transform> _bodyParts;
 
     private void Start()
@@ -17,26 +17,26 @@ public class SnakeHead : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            _direction = Vector2.up;
+            _direction = new Vector3(0, 0, 1);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            _direction = Vector2.down;
+            _direction = new Vector3(0, 0, -1);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            _direction = Vector2.left;
+            _direction = Vector3.left;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            _direction = Vector2.right;
+            _direction = Vector3.right;
         }
     }
 
     private void FixedUpdate()
     {
         var previousHeadPosition = this.transform.position;
-        this.transform.position = new Vector3(this.transform.position.x + _direction.x, this.transform.position.y + _direction.y);
+        this.transform.position = new Vector3(this.transform.position.x + _direction.x, this.transform.position.y + _direction.y, this.transform.position.z + _direction.z);
         MoveBodyParts(previousHeadPosition);
     }
 
@@ -48,7 +48,7 @@ public class SnakeHead : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Food"))
         {
