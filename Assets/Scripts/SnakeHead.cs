@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour
 {
     [SerializeField] private GameObject _bodyPartPrefab;
-    private Vector3 _direction = Vector3.left;
+    private Vector3? _direction = null;
     private List<Transform> _bodyParts;
 
     private void Start()
@@ -35,13 +35,15 @@ public class SnakeHead : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_direction == null) return;
         var previousHeadPosition = this.transform.position;
-        this.transform.position = new Vector3(this.transform.position.x + _direction.x, this.transform.position.y + _direction.y, this.transform.position.z + _direction.z);
+        this.transform.position = new Vector3(this.transform.position.x + _direction.Value.x, this.transform.position.y + _direction.Value.y, this.transform.position.z + _direction.Value.z);
         MoveBodyParts(previousHeadPosition);
     }
 
     private void MoveBodyParts(Vector3 previousHeadPosition)
     {
+        if (_direction == null) return;
         for (int i = _bodyParts.Count -1 ; i >= 0; i--)
         {
             _bodyParts[i].transform.position = (i == 0 ) ? previousHeadPosition : _bodyParts[i - 1].transform.position;
