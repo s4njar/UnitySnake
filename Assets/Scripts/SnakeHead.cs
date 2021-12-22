@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour
 {
     [SerializeField] private GameObject _bodyPartPrefab;
+    [SerializeField] private GameObject _foodPrefab;
     private Vector3? _direction = null;
     private List<Transform> _bodyParts;
 
@@ -60,6 +61,7 @@ public class SnakeHead : MonoBehaviour
             newBodyPart.transform.position = new Vector3(0, 0, -99);
             newBodyPart.transform.parent = transform.parent;
             _bodyParts.Add(newBodyPart.transform);
+            CreateNewFood();
         }
         else
         {
@@ -69,6 +71,25 @@ public class SnakeHead : MonoBehaviour
 
     private void CreateNewFood()
     {
-        var newBodyPart = Instantiate(_bodyPartPrefab);
+        var newFoodOptions = new List<Vector3>();
+
+        for (int i = 1; i < 30; i++)
+        {
+            for (int j = 1; j < 30; j++)
+            {
+                newFoodOptions.Add(new Vector3(i, 0, j));
+            }
+        }
+
+        newFoodOptions.Remove(this.transform.position);
+
+        for (int i = 0; i < this._bodyParts.Count; i++)
+        {
+            newFoodOptions.Remove(_bodyParts[i].position);
+        }
+        System.Random rnd = new System.Random();
+        int newFoodIndex = rnd.Next(newFoodOptions.Count);
+
+        Instantiate(_foodPrefab, newFoodOptions[newFoodIndex], new Quaternion());
     }
 }
