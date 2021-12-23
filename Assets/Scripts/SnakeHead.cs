@@ -6,6 +6,8 @@ public class SnakeHead : MonoBehaviour
 {
     [SerializeField] private GameObject _bodyPartPrefab;
     [SerializeField] private GameObject _foodPrefab;
+    [SerializeField] private TextMesh _scoreText;
+    private int _score = 0;
     private Vector3? _direction = null;
     private List<Transform> _bodyParts;
 
@@ -57,10 +59,12 @@ public class SnakeHead : MonoBehaviour
         {
             Destroy(other.gameObject);
             var newBodyPart = Instantiate(_bodyPartPrefab);
-            //newBodyPart.transform.position = transform.position;
-            newBodyPart.transform.position = new Vector3(0, 0, -99);
+            newBodyPart.transform.position = transform.position;
+            //newBodyPart.transform.position = new Vector3(0, 0, -99);
             newBodyPart.transform.parent = transform.parent;
             _bodyParts.Add(newBodyPart.transform);
+            _score++;
+            _scoreText.text = "Score: " + _score;
             CreateNewFood();
         }
         else
