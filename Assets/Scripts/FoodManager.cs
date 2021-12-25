@@ -11,35 +11,38 @@ namespace Assets.Scripts
         public UnityEvent foodEatenEvent;
 
 
+        private Vector3 GetNewFoodPosition()
+        {
+            var newFoodOptions = new List<Vector3>();
+
+            for (int i = 1; i < 30; i++)
+            {
+                for (int j = 1; j < 30; j++)
+                {
+                    newFoodOptions.Add(new Vector3(i + 1, 0, j + 1));
+                }
+            }
+
+            var snakeHeads = FindObjectsOfType<SnakeHead>();
+
+            foreach (var head in snakeHeads)
+            {
+                head.GetPartsPositions().ForEach(position => newFoodOptions.Remove(position));
+            }
+
+            System.Random rnd = new System.Random();
+            int newFoodIndex = rnd.Next(newFoodOptions.Count);
+
+            return newFoodOptions[newFoodIndex];
+        }
+
         public void CreateNewFood()
         {
             foodEatenEvent.Invoke();
             var newFood = Instantiate(_foodPrefab);
             newFood.GetComponent<Food>().foodEatenEvent.AddListener(CreateNewFood);
             System.Random rnd = new System.Random();
-            newFood.gameObject.transform.position = new Vector3(rnd.Next(29) + 1, 0, rnd.Next(30) + 1);
-            
-
-            //var newFoodOptions = new List<Vector3>();
-
-            //for (int i = 1; i < 30; i++)
-            //{
-            //    for (int j = 1; j < 30; j++)
-            //    {
-            //        newFoodOptions.Add(new Vector3(i, 0, j));
-            //    }
-            //}
-
-            //newFoodOptions.Remove(this.transform.position);
-
-            //for (int i = 0; i < this._bodyParts.Count; i++)
-            //{
-            //    newFoodOptions.Remove(_bodyParts[i].position);
-            //}
-            //System.Random rnd = new System.Random();
-            //int newFoodIndex = rnd.Next(newFoodOptions.Count);
-
-            //Instantiate(_foodPrefab, newFoodOptions[newFoodIndex], new Quaternion());
+            newFood.gameObject.transform.position = GetNewFoodPosition();
         }
     }
 }

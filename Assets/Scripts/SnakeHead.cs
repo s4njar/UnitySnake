@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SnakeHead : MonoBehaviour
 {
     [SerializeField] private GameObject _bodyPartPrefab;
-    private int _score = 0;
     private Vector3? _direction = null;
     private List<Transform> _bodyParts;
 
@@ -67,5 +66,11 @@ public class SnakeHead : MonoBehaviour
         newBodyPart.transform.parent = transform.parent;
         _bodyParts.Add(newBodyPart.transform);
     }
-
+    public List<Vector3> GetPartsPositions()
+    {
+        var res = new List<Vector3>();
+        res.Add(this.transform.position);
+        _bodyParts.ForEach(part => res.Add(part.position));
+        return res;
+    }
 }
