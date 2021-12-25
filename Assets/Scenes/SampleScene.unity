@@ -385,7 +385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &658437521 stripped
 GameObject:
@@ -442,7 +442,7 @@ Transform:
   m_Children:
   - {fileID: 13868593}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &740938999
 PrefabInstance:
@@ -509,6 +509,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe88c87f557c82f4b990614fba760fe0, type: 3}
+--- !u!1 &894551333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 894551335}
+  - component: {fileID: 894551334}
+  m_Layer: 0
+  m_Name: FoodManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &894551334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894551333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72b5e15575547645996d73a5c429edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _foodPrefab: {fileID: 8148320642164106956, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+  foodEatenEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1778258151}
+        m_TargetAssemblyTypeName: Assets.Scripts.ScoreManager, Assembly-CSharp
+        m_MethodName: IncreaseScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1930719474}
+        m_TargetAssemblyTypeName: SnakeHead, Assembly-CSharp
+        m_MethodName: AddNewBodyPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &894551335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894551333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1078873330
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +671,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1109000239
 PrefabInstance:
@@ -700,7 +771,7 @@ Transform:
   - {fileID: 42613368}
   - {fileID: 1202169688}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1202169687 stripped
 GameObject:
@@ -875,6 +946,61 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1778258150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1778258152}
+  - component: {fileID: 1778258151}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1778258151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778258150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426261cdbde6954458a7e8ebf9b3215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 1492023469}
+--- !u!4 &1778258152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778258150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1930719474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3824432564521672406, guid: 648f18dca3f07d349a864d8fd5bb6f18, type: 3}
+  m_PrefabInstance: {fileID: 3824432564510359781}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacd02f5997afb3438a7ff75b1b3db2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3824432564510359781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -954,7 +1080,8 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3824432564521672401, guid: 648f18dca3f07d349a864d8fd5bb6f18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 648f18dca3f07d349a864d8fd5bb6f18, type: 3}
 --- !u!1001 &6979073731782972623
 PrefabInstance:
@@ -1028,13 +1155,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 894551334}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: _foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 894551334}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateNewFood
+      objectReference: {fileID: 0}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.FoodManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -301654988809730157, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
+      propertyPath: foodEatenEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8148320642164106956, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
       propertyPath: m_Name
       value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 8148320642164106961, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8148320642164106961, guid: 7bcec323d2434b0468de9e21bf74a342, type: 3}
       propertyPath: m_LocalPosition.x
